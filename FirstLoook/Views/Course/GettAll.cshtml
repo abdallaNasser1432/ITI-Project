@@ -1,0 +1,38 @@
+﻿
+@model List<Course>
+<h1>Courses</h1>
+<table class="table table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Degree</th>
+			<th>MinDegree</th>
+			<th>Department_Id</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var dept in Model)
+		{
+			<tr>
+				<td>
+					<a href="/Course/getIns/@dept.Id">@dept.Id</a>
+				</td>
+				<td>
+					@dept.Name
+				</td>
+				<td>
+					@dept.Degree
+				</td>
+				<td>
+					@dept.MinDegree
+				</td>
+				<td>
+					<a href="/Department/getOne/@dept.DeptId">@dept.DeptId</a>
+				</td>
+			</tr>
+		}
+		
+	</tbody>
+</table>
+

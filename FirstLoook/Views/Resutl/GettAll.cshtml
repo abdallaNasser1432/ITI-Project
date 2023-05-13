@@ -1,0 +1,58 @@
+﻿@model List<CrsResult>
+<h1>Results</h1>
+<table class="table table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>CourseName</th>
+			<th>Degree</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		
+		
+		@{
+		foreach(var dept in Model)
+		{
+				<tr>
+					<td>
+					@{
+                        CollegeContext Db = new CollegeContext(); 
+                        var result=Db.Trainees.Where(p=>p.Id==dept.traineeId).Select(p=>p.Id).Single();
+						
+					}
+					@result
+						
+					</td>
+					<td>
+						@{
+                        
+                        var resultN=Db.Trainees.Where(p=>p.Id==dept.traineeId).Select(p=>p.Name).Single();
+						
+					}
+					@resultN
+					</td>
+					<td>
+						@{
+                        
+                        var resultC=Db.Courses.Where(p=>p.Id==dept.crsId).Select(p=>p.Name).Single();
+						
+					}
+					@resultC
+					</td>
+					<td>
+						@dept.degree
+					</td>
+					<td>
+					<a href="/Resutl/Edite/@dept.Id" class="btn btn-primary">Update</a>
+				</td>
+					
+				</tr>
+		}
+		}
+		
+		
+	</tbody>
+</table>

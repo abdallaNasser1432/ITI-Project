@@ -1,0 +1,45 @@
+﻿@model Course
+<h1>Instructor teches @Model.Name</h1>
+<table class="table table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Degree</th>
+			<th>MinDegree</th>
+			<th>Department_Id</th>
+			<th>Course_Id</th>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			CollegeContext Db = new CollegeContext(); 
+            var result=Db.Instructors.Where(p=>p.CrstId==Model.Id);
+		
+		foreach(var dept in result)
+		{
+			<tr>
+				<td>
+					<a href="/Instructor/getOne/@dept.Id">@dept.Id</a>
+				</td>
+				<td>
+					@dept.Name
+				</td>
+				<td>
+					@dept.Address
+				</td>
+				<td>
+					@dept.Salary$
+				</td>
+				<td>
+					<a href="/Department/getOne/@dept.DeptId">@dept.DeptId</a>
+				</td>
+				<td>
+					<a href="/Course/getOne/@dept.CrstId">@dept.CrstId</a>
+				</td>
+			</tr>
+		}
+		}
+		
+	</tbody>
+</table>

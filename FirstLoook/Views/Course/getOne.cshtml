@@ -1,0 +1,14 @@
+﻿@model Course
+
+<h1>@Model.Name</h1>
+<div class="container">
+  
+  <div class="card" style="width:400px">
+   
+    <div class="card-body">
+      <h4 class="card-title">Name :@Model.Name</h4>
+      <p class="card-text">Id :@Model.Id</p>
+      <a href="/Course/GettAll" class="btn btn-primary">Back To Courses</a>
+       <a href="/Instructor/GettAll" class="btn btn-primary">Back To Instructor</a>
+    </div>
+  </div>

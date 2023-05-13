@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Edite";
+}
+@model Instructor
+<h1>Edite Instructor</h1>
+
+
+<form method="post" action="/Instructor/EditeSave/@Model.Id">
+ <div>
+     <label>Name :</label>
+     <input type="text" name="Name" id="Name" value="@Model.Name" class="form-check form-control"/>
+ </div> 
+ <div>
+     <label>Address :</label>
+     <input type="text" name="Address" id="Address" value="@Model.Address" class="form-check form-control"/>
+ </div> 
+ <div>
+     <label>Salary :</label>
+     <input type="text" name="Salary" id="Salary" value="@Model.Salary" class="form-check form-control"/>
+ </div> 
+ <div>
+     <label>Image :</label>
+     <input type="text" name="Image" id="Image" value="@Model.Image" class="form-check form-control"/>
+ </div> 
+ <div>
+     <label>Department_Id :</label>
+     <select name="DeptId" class="form-check form-control">
+     @{
+          CollegeContext Db = new CollegeContext();
+          List<Department> deptList = Db.Departments.ToList();
+          foreach (Department dept in deptList)
+            {
+               if (dept.Id==Model.DeptId)
+                {
+                    <option value="@dept.Id" selected>@dept.Name</option>
+                }
+                else
+                {
+                    <option value="@dept.Id" >@dept.Name</option>
+                }
+                
+            }
+
+      }
+       </select>
+ </div> 
+ <div>
+     <label>Courses_Id :</label>
+     <select name="CrstId" class="form-check form-control">
+     @{
+          
+          List<Course> crsList = Db.Courses.ToList();
+          foreach (var dept in crsList)
+            {
+                if (dept.Id==Model.CrstId)
+                {
+                    <option value="@dept.Id" selected>@dept.Name</option>
+                }
+                else
+                {
+                    <option value="@dept.Id" >@dept.Name</option>
+                }
+            }
+
+      }
+       </select>
+ </div> 
+ <br />
+ <input type="submit" value="Update" class="btn btn-outline-success"/>
+</form>
+ <br />
+ <a href="/Instructor/GettAll" class="btn btn-primary">Back To List</a>
+

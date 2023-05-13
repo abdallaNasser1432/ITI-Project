@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Edite";
+}
+
+@model CrsResult
+
+<h1>Edite Result</h1>
+
+<form method="post" action="/Resutl/EditeSave/@Model.Id">
+ <div>
+     @{
+         CollegeContext Db = new CollegeContext(); 
+         var result=Db.Trainees.Where(p=>p.Id==Model.traineeId).Select(p=>p.Name).Single();
+     }
+     <label><h3>Name :@result</h3></label>
+     
+ </div> 
+ <div>
+    @{
+         
+         var result1=Db.Courses.Where(p=>p.Id==Model.crsId).Select(p=>p.Name).Single();
+     }
+     <label><h3>Course :@result1</h3></label>
+     
+ </div> 
+ 
+<div>
+     <label>Degree :</label>
+     <input type="text" name="Degree" id="Degree" value="@Model.degree" class="form-check form-control"/>
+ </div> 
+ <br />
+ <input type="submit" value="Update" class="btn btn-outline-success"/>
+</form>
+ <br />
+ <a href="/Resutl/GettAll" class="btn btn-primary">Back To List</a>

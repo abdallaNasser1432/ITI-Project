@@ -1,0 +1,45 @@
+﻿@model Trainee
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+</style>
+<center>
+
+<h1>Details</h1>
+<div class="card">
+  <img src="/Images/@Model.Image" alt="Avatar" style="width:100%">
+  <div class="container">
+    <h4><b>@Model.Name</b></h4>
+    @{
+        CollegeContext Db = new CollegeContext(); 
+        var dpt=Db.Departments.FirstOrDefault(p=>p.Id==Model.DeptId);
+        <p>Study at  @dpt.Name</p>
+    }
+    
+           <a href="/Department/GettAll" class="btn btn-primary">Back To Departments</a>
+      <a href="/Trainee/GettAll" class="btn btn-primary">Back To Trainees</a>
+ 
+      
+      
+</div>
+  </div>
+      
+</div>
+</center>

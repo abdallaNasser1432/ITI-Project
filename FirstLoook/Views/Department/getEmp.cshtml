@@ -1,0 +1,41 @@
+﻿@model Department
+<h1>Trainee in @Model.Name</h1>
+<table class="table table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Adress</th>
+			<th>Grade</th>
+			<th>Department_Id</th>
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			CollegeContext Db = new CollegeContext(); 
+            var result=Db.Trainees.Where(p=>p.DeptId==Model.Id);
+		
+		foreach(var dept in result)
+		{
+			<tr>
+				<td>
+					<a href="/Trainee/getOne/@dept.Id">@dept.Id</a>
+				</td>
+				<td>
+					@dept.Name
+				</td>
+				<td>
+					@dept.Address
+				</td>
+				<td>
+					@dept.Grade
+				</td>
+				<td>
+					<a href="/Department/getOne/@dept.DeptId">@dept.DeptId</a>
+				</td>
+			</tr>
+		}
+		}
+		
+	</tbody>
+</table>

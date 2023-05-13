@@ -1,0 +1,18 @@
+﻿
+<div style="display:flex ; flax-wrap:wrap">
+
+@foreach (Product item in Model)
+{
+	<div style="margin:2px ; border:2px red solid ;display:flex">
+	<ul>
+		<li>@item.Id</li>
+		<li>@item.Name</li>
+		<li>@item.Price</li>
+		<li>@item.Quantity</li>	
+	</ul>
+	<img src="/Images/@item.Image" style="width:100px;height:100px"/>
+	</div>
+}
+</div>
+
+<a href="/Product/Welcome">Welcome Action</a>

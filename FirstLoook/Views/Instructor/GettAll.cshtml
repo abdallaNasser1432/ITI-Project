@@ -1,0 +1,44 @@
+﻿@model List<Instructor>
+<h1>Instructor</h1>
+<table class="table table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Adress</th>
+			<th>Salary</th>
+			<th>Department_Id</th>
+			<th>Course_Id</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var dept in Model)
+		{
+			<tr>
+				<td>
+					<a href="/Instructor/getOne/@dept.Id">@dept.Id</a>
+				</td>
+				<td>
+					@dept.Name
+				</td>
+				<td>
+					@dept.Address
+				</td>
+				<td>
+					@dept.Salary$
+				</td>
+				<td>
+					<a href="/Department/getOne/@dept.DeptId">@dept.DeptId</a>
+				</td>
+				<td>
+					<a href="/Course/getOne/@dept.CrstId">@dept.CrstId</a>
+				</td>
+				<td>
+					<a href="/Instructor/Edite/@dept.Id" class="btn btn-primary">Update</a>
+				</td>
+			</tr>
+		}
+		
+	</tbody>
+</table>
+ <a href="/Instructor/New" class="btn btn-primary">Add Instructor</a>
